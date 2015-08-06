@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<ui:composition template="/index.xhtml"
+xmlns="http://www.w3.org/1999/xhtml"
+xmlns:f="http://xmlns.jcp.org/jsf/core"
+xmlns:h="http://xmlns.jcp.org/jsf/html"
+xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+xmlns:p="http://primefaces.org/ui">
+<ui:define name="titulo">| Cadastro de Produtos</ui:define>
+<ui:define name="css"><h:outputStylesheet library="css" name="cadproduto.css"/></ui:define>
+
+<ui:define name="corpo">
+<p:panel header="Cadastro de Cargos" style="border:0px;">
+    
+    <p:commandButton value="Cancelar" icon="ui-icon-close" action="#{cargoController.preparaObjeto()}"/>
+    <p:growl autoUpdate="true"  />
+    
+    <h:form>
+        
+<fieldset>
+<legend>Incluir Cargo</legend>
+<h:panelGrid columns="2">
+    <p:outputLabel value="Id : "/>
+    <p:inputText disabled="true" size="4" value="#{cargoController.cargo.id}"/>
+<p:outputLabel value="Nome : "/>
+<p:inputText  requiredMessage="Digite o nome do departamento" required="true" id="marca"  value="#{cargoController.cargo.nome}"/>
+<p:outputLabel value="Departamento : "/>
+<p:autoComplete requiredMessage="Digite o nome do departamento" required="true" 
+                value="#{cargoController.departamento}" converter="departamentoConverter" completeMethod="#{cargoController.complete}" var="dep" itemLabel="#{dep.nome}" itemValue="#{dep}"/>
+
+
+<p:commandButton value="Salvar"  icon="ui-icon-disk" action="#{cargoController.alterar()}" />
+</h:panelGrid>
+
+</fieldset>
+ 
+</h:form>
+</p:panel>
+</ui:define>
+</ui:composition>

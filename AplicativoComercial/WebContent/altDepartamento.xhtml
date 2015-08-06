@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<ui:composition template="/index.xhtml"
+xmlns="http://www.w3.org/1999/xhtml"
+xmlns:f="http://xmlns.jcp.org/jsf/core"
+xmlns:h="http://xmlns.jcp.org/jsf/html"
+xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+xmlns:p="http://primefaces.org/ui">
+<ui:define name="titulo">| Alteração de dados de Departamento</ui:define>
+<ui:define name="css"><h:outputStylesheet library="css" name="cadproduto.css"/></ui:define>
+
+<ui:define name="corpo">
+<p:panel header="Cadastro de Departamento" style="border:0px;">
+    
+<p:commandButton value="Cancelar"  icon="ui-icon-close" action="#{departamentoController.preparaObjeto()}"/>
+<p:messages autoUpdate="true"/>
+    <h:form>
+<fieldset>
+<legend>Incluir Departamento</legend>
+<h:panelGrid columns="5">
+    <p:outputLabel value="Id : "/><p:inputText readonly="true" size="4" value="#{departamentoController.d.id}"/>
+    <p:outputLabel value="Nome : "/><p:inputText required="true" requiredMessage="Digite o nome da marca" rendered="true" id="marca" value="#{departamentoController.d.nome}"/>
+
+<p:commandButton value="Atualizar"  icon="ui-icon-refresh" action="#{departamentoController.alterar()}"/>
+</h:panelGrid>
+
+</fieldset>
+ 
+</h:form>
+</p:panel>
+</ui:define>
+</ui:composition>

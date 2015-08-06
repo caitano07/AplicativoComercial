@@ -1,0 +1,19 @@
+@CHARSET "ISO-8859-1";
+*{
+	font-family: calibri;
+	margin:0 auto;
+	font-size: 14px;
+}
+
+body{
+	background-color:teal;
+	width: 70%;
+	color:white;
+}
+
+
+#corpo{
+    height: 520px;
+    background-color: white;
+    
+}

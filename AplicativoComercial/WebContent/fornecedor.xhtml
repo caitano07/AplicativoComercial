@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<ui:composition template="/index.xhtml"
+xmlns="http://www.w3.org/1999/xhtml"
+xmlns:f="http://xmlns.jcp.org/jsf/core"
+xmlns:h="http://xmlns.jcp.org/jsf/html"
+xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+xmlns:p="http://primefaces.org/ui">
+<ui:define name="titulo">| Lista de Produtos</ui:define>
+<ui:define name="css"><h:outputStylesheet library="css" name="cadproduto.css"/></ui:define>
+<ui:define name="corpo">
+<p:panel header="Lista de Fornecedores" style="border:0px;">
+
+<h:form>
+<p:commandButton value="Incluir Novo" action="cadastroFornecedor?faces-redirect=true" icon="ui-icon-plusthick"/>
+<p:commandButton value="Imprimir Todos" icon="ui-icon-print"/>
+<br/>
+<fieldset >
+<legend>Buscar Fornecedor</legend>
+<h:panelGrid columns="2">
+<p:outputLabel value="Nome Fantasia :"/>
+<p:inputText size="80" placeholder="Digite o nome fantasia" value="#{fornecedorController.pesq}">
+    <f:ajax event="keyup" render="tabela"/>
+</p:inputText>
+    
+</h:panelGrid>
+</fieldset>
+<br/>
+<p:dataTable id="tabela" var="forn" value="#{fornecedorController.listar()}" style="height:280px;text-align:center" 
+emptyMessage="Nenhum fornecedor cadastrado" paginator="true" paginatorAlwaysVisible="false" rows="7">
+<p:column width="2" headerText="Id">
+#{forn.id}
+</p:column>
+<p:column width="45" headerText="Razão Social">
+#{forn.razaoSocial}
+</p:column>
+<p:column  width="35" headerText="Nome Fantasia">
+#{forn.nome}
+</p:column>
+<p:column width="15" headerText="CNPJ">
+#{forn.cpf}
+</p:column>
+<p:column width="2">
+<f:facet name="header">Editar</f:facet>
+<p:commandButton icon="ui-icon-pencil" action="#{fornecedorController.preparaAlteracao(forn)}" />
+</p:column>
+<p:column width="2">
+<f:facet name="header">Excluir</f:facet>
+<p:commandButton icon="ui-icon-trash" action="#{fornecedorController.excluir(forn)}" update="tabela">
+<p:confirm header="Confirmação"  message="Deseja excluir o fornecedor ?" icon="ui-icon-alert"/>
+</p:commandButton>
+
+<p:confirmDialog global="true">
+<p:commandButton value="Sim"  styleClass="ui-confirmdialog-yes"/>
+<p:commandButton value="Não" styleClass="ui-confirmdialog-no" />
+</p:confirmDialog>
+
+</p:column>
+</p:dataTable>
+
+</h:form>
+</p:panel>
+</ui:define>
+</ui:composition>
