@@ -19,7 +19,7 @@ public class MarcaDaoImp implements MarcaDao {
 	}
 
 
-	public Marca getMarca(long id) {
+	public Marca getById(int id) {
 
         Session session = HibernateUtil2.getSessionFactory().openSession();
         return (Marca) session.load(Marca.class, id);
@@ -67,7 +67,8 @@ public class MarcaDaoImp implements MarcaDao {
 		
 		
 	}
-	
+
+
 	
 
 }

@@ -73,7 +73,7 @@ public class ClienteController {
     public String adicionar() {
         ClienteDao c = new ClienteDaoImp();
         cliente.setEndereco(end);
-        c.save(cliente, end);
+        c.save(cliente);
         setCliente(new Cliente());
         setEnd(new Endereco());
         return "cliente?faces-redirect=true";

@@ -19,7 +19,7 @@ public class DepartamentoConverter implements Converter{
     @Override
     public Object getAsObject(FacesContext fc, UIComponent uic, String value) {
         System.out.println("VALOR :"+value);
-        Departamento d = new DepartamentoDaoImp().getDepartamento(Integer.parseInt(value));
+        Departamento d = new DepartamentoDaoImp().getById(Integer.parseInt(value));
         return d;
     }
 

@@ -15,6 +15,9 @@
 <mapping class="model.Pessoa" />
 <mapping class="model.Endereco" />
 <mapping class="model.Fornecedor" />
+<mapping class="model.Funcionario" />
+<mapping class="model.Departamento" />
+<mapping class="model.Cargo" />
 </session-factory>
 
 </hibernate-configuration>

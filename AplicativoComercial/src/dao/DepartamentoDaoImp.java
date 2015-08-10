@@ -19,7 +19,7 @@ public class DepartamentoDaoImp implements DepartamentoDao {
 	}
 
 
-	public Departamento getDepartamento(int id) {
+	public Departamento getById(int id) {
 
         Session session = HibernateUtil2.getSessionFactory().openSession();
         Departamento d = (Departamento) session.load(Departamento.class, id);

@@ -11,17 +11,17 @@ import java.util.List;
 public class ClienteDaoImp implements ClienteDao {
 
 
-	public void save(Cliente c,Endereco e) {
+	public void save(Cliente c) {
 		Session session = HibernateUtil2.getSessionFactory().openSession();
 		Transaction t = session.beginTransaction();
-		session.save(e);
+		session.save(c.getEndereco());
 		session.save(c);
 		t.commit();
 		
 	}
 
 
-	public Cliente getMarca(long id) {
+	public Cliente getById(int id) {
 
         Session session = HibernateUtil2.getSessionFactory().openSession();
         return (Cliente) session.load(Cliente.class, id);

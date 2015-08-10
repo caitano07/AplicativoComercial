@@ -19,7 +19,7 @@ public class CargoDaoImp implements CargoDao {
 	}
 
 
-	public Cargo getCargo(int id) {
+	public Cargo getById(int id) {
 
         Session session = HibernateUtil2.getSessionFactory().openSession();
         Cargo c = (Cargo) session.load(Cargo.class, id);
@@ -67,6 +67,7 @@ public class CargoDaoImp implements CargoDao {
 		
 		
 	}
+
 
         
 

@@ -49,18 +49,13 @@ public class MarcaController {
         this.marca = marca;
     }
 
-    public static void addGlobalMessage(String message) {  
-        FacesContext context = FacesContext.getCurrentInstance();
-        FacesMessage mensagem = new FacesMessage(
-FacesMessage.SEVERITY_INFO, message,message);
-context.addMessage(null, mensagem);
-  }
+
     
     public String adicionar() {
         MarcaDao dao = new MarcaDaoImp();
         dao.save(marca);
         marca = new Marca();
-        addGlobalMessage("ok");
+
         return "marca?faces-redirect=true";
     }
 
@@ -68,8 +63,8 @@ context.addMessage(null, mensagem);
 
         MarcaDao dao = new MarcaDaoImp();
         dao.remove(m);
-        
-        addGlobalMessage("Exclusão efetuada com sucesso");
+
+
 
     }
 

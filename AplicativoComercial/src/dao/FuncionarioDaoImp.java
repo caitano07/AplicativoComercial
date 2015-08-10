@@ -20,7 +20,7 @@ public class FuncionarioDaoImp implements FuncionarioDao {
 	}
 
 
-	public Funcionario getFuncionario(int id) {
+	public Funcionario getById(int id) {
         Session session = HibernateUtil2.getSessionFactory().openSession();
         return (Funcionario) session.load(Funcionario.class, id);
 

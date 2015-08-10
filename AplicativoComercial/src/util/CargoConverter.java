@@ -19,7 +19,7 @@ public class CargoConverter implements Converter{
     @Override
     public Object getAsObject(FacesContext fc, UIComponent uic, String value) {
         System.out.println("VALOR :"+value);
-        Cargo c = new CargoDaoImp().getCargo(Integer.parseInt(value));
+        Cargo c = new CargoDaoImp().getById(Integer.parseInt(value));
         return c;
     }
 

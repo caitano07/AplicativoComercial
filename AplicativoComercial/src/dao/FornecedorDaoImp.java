@@ -22,7 +22,7 @@ public class FornecedorDaoImp implements FornecedorDao {
 	}
 
 	@Override
-	public Fornecedor getFornecedor(long id) {
+	public Fornecedor getById(int id) {
 		Session session = HibernateUtil2.getSessionFactory().openSession();
 		Fornecedor f = (Fornecedor) session.load(Fornecedor.class, id);
                 return f;
