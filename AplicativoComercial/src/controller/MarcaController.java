@@ -1,15 +1,13 @@
 package controller;
 
-import dao.MarcaDao;
-import dao.MarcaDaoImp;
 import java.util.ArrayList;
 import java.util.List;
-import javax.faces.application.FacesMessage;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 
+
+import service.MarcaService;
 import model.Marca;
 
 @ManagedBean
@@ -17,6 +15,7 @@ import model.Marca;
 public class MarcaController {
 
     List<Marca> lista = new ArrayList<Marca>();
+    MarcaService service= new MarcaService();
     Marca marca;
     String pesq = "";
 
@@ -52,38 +51,28 @@ public class MarcaController {
 
     
     public String adicionar() {
-        MarcaDao dao = new MarcaDaoImp();
-        dao.save(marca);
+    	service.salvar(marca);
         marca = new Marca();
-
         return "marca?faces-redirect=true";
     }
 
     public void excluir(Marca m) {
-
-        MarcaDao dao = new MarcaDaoImp();
-        dao.remove(m);
-
-
-
-    }
+    	service.excluir(m);
+        }
 
     public List<Marca> listar() {
-        lista = new MarcaDaoImp().list(pesq);
-        System.out.println("valor :" + pesq);
+        lista = service.listar(pesq);
         return lista;
     }
 
     public String alterar() {
-        MarcaDao dao = new MarcaDaoImp();
-        dao.update(marca);
+    	service.editar(marca);
         marca = new Marca();
         return "marca?faces-redirect=true";
     }
     
     public String preparaAlteracao(Marca m){
-    marca=m;
-        System.out.println("Marca : "+marca.getNome());
+    	marca=m;
         return "altMarca?faces-redirect=true";
     }
     

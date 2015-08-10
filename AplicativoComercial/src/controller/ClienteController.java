@@ -2,12 +2,14 @@ package controller;
 
 import dao.ClienteDao;
 import dao.ClienteDaoImp;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import service.ClienteService;
 import model.Cliente;
 import model.Endereco;
 
@@ -16,7 +18,8 @@ import model.Endereco;
 @ManagedBean
 @SessionScoped
 public class ClienteController {
-
+	
+	ClienteService service = new ClienteService();
     List<Cliente> lista = new ArrayList<Cliente>();
     Cliente cliente;
     Endereco end;
@@ -71,24 +74,22 @@ public class ClienteController {
     }
 
     public String adicionar() {
-        ClienteDao c = new ClienteDaoImp();
         cliente.setEndereco(end);
-        c.save(cliente);
+        service.salvar(cliente);
         setCliente(new Cliente());
         setEnd(new Endereco());
         return "cliente?faces-redirect=true";
     }
     
     public List<Cliente> listar() {
-        lista = new ClienteDaoImp().list(pesq);
-        System.out.println("valor :" + pesq);
+        lista = service.listar(pesq);
         return lista;
     }
     
     
     public String alterar() {
-        ClienteDao dao = new ClienteDaoImp();
-        dao.update(cliente);
+
+        service.editar(cliente);
         cliente = new Cliente();
         return "cliente?faces-redirect=true";
     }
@@ -100,9 +101,7 @@ public class ClienteController {
     }
     
     public void excluir(Cliente m) {
-
-        ClienteDao dao = new ClienteDaoImp();
-        dao.remove(m);
+    	service.excluir(m);
         
      
     }
