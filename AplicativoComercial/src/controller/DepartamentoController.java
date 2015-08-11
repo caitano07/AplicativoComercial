@@ -3,15 +3,21 @@ package controller;
 
 import dao.DepartamentoDao;
 import dao.DepartamentoDaoImp;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+
+import service.DepartamentoService;
 import model.Departamento;
 
 @ManagedBean
 @SessionScoped
 public class DepartamentoController {
+	
+	DepartamentoService service = new DepartamentoService();
     
     List<Departamento> lista = new ArrayList<Departamento>();
     Departamento d = new Departamento();
@@ -50,21 +56,19 @@ public class DepartamentoController {
     
     
     public String adicionar() {
-        DepartamentoDao c = new DepartamentoDaoImp();
-        c.save(d);
+        service.salvar(d);
         setD(new Departamento());
         return "departamento?faces-redirect=true";
     }
     
     public List<Departamento> listar() {
-        lista = new DepartamentoDaoImp().list(pesq);
+        lista = service.listar(pesq);
         return lista;
     }
     
     
     public String alterar() {
-        DepartamentoDao dao = new DepartamentoDaoImp();
-        dao.update(d);
+        service.editar(d);
         d = new Departamento();
         return "departamento?faces-redirect=true";
     }
@@ -75,9 +79,7 @@ public class DepartamentoController {
     }
     
     public void excluir(Departamento m) {
-
-        DepartamentoDao dao = new DepartamentoDaoImp();
-        dao.remove(m);
+service.excluir(m);
         
      
     }
