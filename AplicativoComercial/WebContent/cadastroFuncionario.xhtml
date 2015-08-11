@@ -95,9 +95,10 @@ size="15" value="#{funcionarioController.funcionario.celular}"/>
 <h:panelGrid columns="2">
     
 <p:outputLabel value="Cargo :"/>
-<p:autoComplete required="true" requiredMessage="Digite o cargo" size="15" value="#{funcionarioController.funcionario.cargo}"
-                dropdown="true" converter="cargoConverter" completeMethod="#{funcionarioController.cargoComplete}" var="cargo" 
-                itemLabel="#{cargo.nome}" itemValue="#{cargo}"/>
+<p:autoComplete required="true" requiredMessage="Digite o cargo" size="15" 
+				 value="#{funcionarioController.funcionario.cargo}"
+                 converter="cargoConverter" completeMethod="#{funcionarioController.cargoComplete}" 
+                 var="cargo" itemLabel="#{cargo.nome}" itemValue="#{cargo}"/>
 
 <p:outputLabel value="Salário :"/>
 <p:inputText required="true" requiredMessage="Digite o salário" size="15"

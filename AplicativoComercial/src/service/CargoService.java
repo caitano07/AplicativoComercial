@@ -34,8 +34,8 @@ dao.remove(t);
 
 	@Override
 	public List<Cargo> listar(String valor) {
-		List<Cargo> lista= new CargoDaoImp().list(valor);
-		return lista;
+		return new CargoDaoImp().list(valor);
+		
 	}
 
 }
