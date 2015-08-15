@@ -14,7 +14,6 @@ public class ClienteDaoImp implements ClienteDao {
 	public void save(Cliente c) {
 		Session session = HibernateUtil2.getSessionFactory().openSession();
 		Transaction t = session.beginTransaction();
-		session.save(c.getEndereco());
 		session.save(c);
 		t.commit();
 		
@@ -50,7 +49,6 @@ public class ClienteDaoImp implements ClienteDao {
         Session session = HibernateUtil2.getSessionFactory().openSession();
         Transaction t = session.beginTransaction();
         session.delete(c);
-        session.delete(c.getEndereco());
         t.commit();
 
 		
@@ -62,7 +60,6 @@ public class ClienteDaoImp implements ClienteDao {
         Session session = HibernateUtil2.getSessionFactory().openSession();
         Transaction t = session.beginTransaction();
         session.update(c);
-        session.update(c.getEndereco());
         t.commit();
 
 		

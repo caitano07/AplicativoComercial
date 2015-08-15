@@ -1,15 +1,14 @@
 package model;
 
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 
-@Entity
+@Embeddable
 public class Endereco {
-    @Id
-    @GeneratedValue
-    int id;
+    
     String estado;
     String cidade;
     String bairro;
@@ -18,13 +17,6 @@ public class Endereco {
     String numero;
     String complemento;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getEstado() {
         return estado;

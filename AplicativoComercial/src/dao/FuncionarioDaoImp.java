@@ -13,9 +13,6 @@ public class FuncionarioDaoImp implements FuncionarioDao {
 	public void save(Funcionario c) {
 		Session session = HibernateUtil2.getSessionFactory().openSession();
 		Transaction t = session.beginTransaction();
-
-		System.out.println("end - "+c.getEndereco());
-		session.persist(c.getEndereco());
 		session.save(c);
 		t.commit();
 		
@@ -61,7 +58,6 @@ public class FuncionarioDaoImp implements FuncionarioDao {
         Session session = HibernateUtil2.getSessionFactory().openSession();
         Transaction t = session.beginTransaction();
         session.update(c);
-        
         t.commit();
 
 		

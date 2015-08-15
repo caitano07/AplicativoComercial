@@ -15,7 +15,6 @@ public class FornecedorDaoImp implements FornecedorDao {
 	public void save(Fornecedor c) {
 		Session session = HibernateUtil2.getSessionFactory().openSession();
 		Transaction t = session.beginTransaction();
-		session.save(c.getEndereco());
 		session.save(c);
 		t.commit();
 
@@ -51,7 +50,6 @@ public class FornecedorDaoImp implements FornecedorDao {
         Session session = HibernateUtil2.getSessionFactory().openSession();
         Transaction t = session.beginTransaction();
         session.delete(c);
-        session.delete(c.getEndereco());
         t.commit();
 	}
 
@@ -61,7 +59,7 @@ public class FornecedorDaoImp implements FornecedorDao {
         Session session = HibernateUtil2.getSessionFactory().openSession();
         Transaction t = session.beginTransaction();
         session.update(c);
-        session.update(c.getEndereco());
+
         t.commit();
 
 	}

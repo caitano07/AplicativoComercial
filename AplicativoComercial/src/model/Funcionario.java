@@ -3,6 +3,7 @@
 package model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -12,9 +13,7 @@ public class Funcionario extends Pessoa{
 	String datanasc;
 	Sexo sexo;
 	EstadoCivil estadoCivil;
-        @ManyToOne
-        Departamento Departamento;
-        @ManyToOne
+        @ManyToOne(fetch=FetchType.LAZY)
         Cargo cargo;
         double salario;
 
@@ -50,13 +49,6 @@ public class Funcionario extends Pessoa{
         this.estadoCivil = estadoCivil;
     }
 
-    public Departamento getDepartamento() {
-        return Departamento;
-    }
-
-    public void setDepartamento(Departamento Departamento) {
-        this.Departamento = Departamento;
-    }
 
     public Cargo getCargo() {
         return cargo;

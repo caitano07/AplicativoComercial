@@ -1,5 +1,6 @@
 package model;
 
+import javax.persistence.Embedded;
 import javax.persistence.Inheritance;
 import javax.persistence.Entity;
 import javax.persistence.InheritanceType;
@@ -17,7 +18,7 @@ public abstract class Pessoa {
 	int id;
 	String nome;
 	String cpf;
-        @ManyToOne
+        @Embedded
 	Endereco endereco;
 	String telefoene;
 	String telefone2;

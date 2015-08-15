@@ -2,6 +2,7 @@
 package model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.ManyToOne;
@@ -14,7 +15,7 @@ public class Cargo {
     @GeneratedValue
     int id;
     String nome;
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.LAZY)
     Departamento Departamento;
 
     public int getId() {

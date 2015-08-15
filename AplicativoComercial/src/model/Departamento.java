@@ -3,8 +3,9 @@
 package model;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 
 
@@ -32,6 +33,6 @@ public class Departamento {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    
+
     
 }
