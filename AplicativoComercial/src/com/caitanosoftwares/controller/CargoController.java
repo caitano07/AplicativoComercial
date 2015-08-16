@@ -71,8 +71,8 @@ public class CargoController {
 	}
 
 	public List<Departamento> complete(String busca) {
-		List<Departamento> list = new DepartamentoDaoImp().list(busca);
-		return list;
+		return new DepartamentoDaoImp().list(busca);
+	
 	}
 
 	public String adicionar() {

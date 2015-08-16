@@ -28,7 +28,7 @@
                 </fieldset>
 
                 <p:dataTable id="tabela" styleClass="table" var="marca" value="#{marcaController.listar()}"
-                             paginator="true" rows="6" paginatorAlwaysVisible="false    " emptyMessage="Nenhuma marca cadastrada">
+                             paginator="true" rows="6" paginatorAlwaysVisible="false" emptyMessage="Nenhuma marca cadastrada">
                     <p:column width="10">
                         <f:facet name="header">Id</f:facet>
                             #{marca.id}

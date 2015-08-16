@@ -25,7 +25,8 @@ xmlns:p="http://primefaces.org/ui">
 <p:inputText  requiredMessage="Digite o nome do departamento" required="true" id="marca"  value="#{cargoController.cargo.nome}"/>
 <p:outputLabel value="Departamento : "/>
 <p:autoComplete requiredMessage="Digite o nome do departamento" required="true" 
-                value="#{cargoController.departamento}" dropdown="true" converter="departamentoConverter" completeMethod="#{cargoController.complete}" var="dep" itemLabel="#{dep.nome}" itemValue="#{dep}"/>
+                value="#{cargoController.departamento}" dropdown="true" converter="departamentoConverter" 
+                completeMethod="#{cargoController.complete}" var="dep" itemLabel="#{dep.nome}" itemValue="#{dep}"/>
 
 
 <p:commandButton value="Salvar"  icon="ui-icon-disk" action="#{cargoController.adicionar()}" />

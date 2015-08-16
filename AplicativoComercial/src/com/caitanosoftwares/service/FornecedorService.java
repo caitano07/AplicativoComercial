@@ -11,8 +11,9 @@ public class FornecedorService implements Service<Fornecedor> {
 	FornecedorDao dao;
 
 	public FornecedorService() {
-	}
-
+		dao=new FornecedorDaoImp(); 
+		}
+			
 	@Override
 	public void salvar(Fornecedor t) {
 

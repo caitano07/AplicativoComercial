@@ -1,7 +1,2 @@
-/controller/
-/dao/
-/hibernate.cfg.xml
-/model/
-/service/
-/util/
 /com/
+/hibernate.cfg.xml

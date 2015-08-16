@@ -7,17 +7,18 @@
 <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
 <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/appcomercial</property>
 <property name="hibernate.connection.username">root</property>
-<property name="hibernate.connection.password">1234</property>
+<property name="hibernate.connection.password">thiagocaitano</property>
 <property name="hibernate.show_sql">true</property>    
 <property name="hibernate.hbm2ddl.auto">update</property> 
-<mapping class="model.Marca" />
-<mapping class="model.Cliente" />
-<mapping class="model.Pessoa" />
-<mapping class="model.Endereco" />
-<mapping class="model.Fornecedor" />
-<mapping class="model.Funcionario" />
-<mapping class="model.Departamento" />
-<mapping class="model.Cargo" />
+<mapping class="com.caitanosoftwares.model.Marca" />
+<mapping class="com.caitanosoftwares.model.Cliente" />
+<mapping class="com.caitanosoftwares.model.Pessoa" />
+<mapping class="com.caitanosoftwares.model.Endereco" />
+<mapping class="com.caitanosoftwares.model.Fornecedor" />
+<mapping class="com.caitanosoftwares.model.Funcionario" />
+<mapping class="com.caitanosoftwares.model.Departamento" />
+<mapping class="com.caitanosoftwares.model.Cargo" />
+<mapping class="com.caitanosoftwares.model.Produto" />
 </session-factory>
 
 </hibernate-configuration>

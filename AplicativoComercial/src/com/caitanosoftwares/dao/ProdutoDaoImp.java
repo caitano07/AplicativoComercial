@@ -1,76 +1,66 @@
 package com.caitanosoftwares.dao;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.caitanosoftwares.model.Marca;
+import com.caitanosoftwares.model.Produto;
 import com.caitanosoftwares.util.HibernateUtil2;
 
-import java.util.List;
+public class ProdutoDaoImp implements ProdutoDao {
 
-public class MarcaDaoImp implements MarcaDao {
-
-
-	public void save(Marca c) {
+	@Override
+	public void save(Produto p) {
 		Session session = HibernateUtil2.getSessionFactory().openSession();
 		Transaction t = session.beginTransaction();
-		session.save(c);
+		session.save(p);
 		t.commit();
 		
 	}
 
-
-	public Marca getById(int id) {
+	@Override
+	public Produto getById(int id) {
 
         Session session = HibernateUtil2.getSessionFactory().openSession();
-        Marca m = (Marca) session.load(Marca.class, id);
+        Produto c = (Produto) session.load(Produto.class, id);
         session.close();
-        return m;
-
+        return c;
 	}
 
-
-	public List<Marca> list(String var) {
-
+	@Override
+	public List<Produto> list(String var) {
 		Session session = HibernateUtil2.getSessionFactory().openSession();
         Transaction t = session.beginTransaction();
-        List lista = session.createQuery("from Marca where nome like '%"+var+"%'").list();
+        List lista = session.createQuery("from Produto where descricao like '%"+var+"%'").list();
         t.commit();
+        session.close();
         return lista;
-
-		
 	}
-        
-        
-	public List<Marca> list() {
-        return null;
-        }
-        
-        
-	public void remove(Marca c) {
-
-
-        Session session = HibernateUtil2.getSessionFactory().openSession();
-        Transaction t = session.beginTransaction();
-        session.delete(c);
-        t.commit();
-
-		
-	}
-
-
-	public void update(Marca c) {
-
-        Session session = HibernateUtil2.getSessionFactory().openSession();
-        Transaction t = session.beginTransaction();
-        session.update(c);
-        t.commit();
-
-		
-		
-	}
-
-
 	
+
+	@Override
+	public List<Produto> list(){
+		return null;
+	}
+
+	@Override
+	public void remove(Produto p) {
+        Session session = HibernateUtil2.getSessionFactory().openSession();
+        Transaction t = session.beginTransaction();
+        session.delete(p);
+        t.commit();
+        session.close();
+		
+	}
+
+	@Override
+	public void update(Produto p) {
+        Session session = HibernateUtil2.getSessionFactory().openSession();
+        Transaction t = session.beginTransaction();
+        session.update(p);
+        t.commit();
+		
+	}
 
 }

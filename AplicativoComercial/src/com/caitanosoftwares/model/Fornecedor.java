@@ -1,11 +1,15 @@
 package com.caitanosoftwares.model;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Fornecedor extends Pessoa {
 	
 	String RazaoSocial;
 	String pessoaContato;
+	@ManyToOne(cascade=CascadeType.ALL)
+	Produto produto;
 	
 	public Endereco getEndereco() {
 		return endereco;

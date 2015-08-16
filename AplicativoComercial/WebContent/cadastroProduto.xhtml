@@ -8,15 +8,13 @@ xmlns:p="http://primefaces.org/ui">
 <ui:define name="titulo">| Cadastro de Produtos</ui:define>
 <ui:define name="css">
 <h:outputStylesheet library="css" name="cadproduto.css"/>
-
-<h:outputScript library="primefaces" name="jquery/jquery.js"/>
-<h:outputScript library="js" name="produto.js"/>
-
 </ui:define>
 
 <ui:define name="corpo">
 <p:panel header="Cadastro de Produtos" style="border:0px;">
 <p:growl autoUpdate="true"/>
+
+<p:commandButton value="Cancelar" action="produto?faces-redirect=true" icon="ui-icon-closethick"/>
 <h:form>
 <p:tabView orientation="left">
 <p:tab title="Dados do Produto">
@@ -26,23 +24,27 @@ xmlns:p="http://primefaces.org/ui">
 <p:outputLabel value="Id : "/> 
 <p:inputText size="5" disabled="true"/>
 <p:outputLabel value="Descrição : "/> 
-<p:inputText required="true" requiredMessage="Digite a descrição" size="40"/>
-<p:outputLabel value="Descrição Resumida : "/> <p:inputText />
+<p:inputText required="true" requiredMessage="Digite a descrição" size="40" value="#{produtoController.p.descricao}"/>
 <p:outputLabel value="Marca : "/> 
-<p:autoComplete required="true" requiredMessage="Digite a marca" size="12"/>
+<p:autoComplete required="true" requiredMessage="Digite a marca" size="12"
+dropdown="true" converter="marcaConverter" completeMethod="#{produtoController.completeMarca}" 
+var="marca" itemLabel="#{marca.nome}" itemValue="#{marca}" value="#{produtoController.p.marca}"
+/>
+
 <p:outputLabel value="Cód. Barras : "/> 
-<p:inputMask  required="true" requiredMessage="Digite o código de barras"  mask="99999999999" size="12"/>
+<p:inputMask  required="true" requiredMessage="Digite o código de barras"  mask="99999999999" size="12" 
+value="#{produtoController.p.codbarras}"/>
 <p:outputLabel value="Unidade : "  />
-<p:selectOneMenu  required="true" requiredMessage="Selecione a unidade">
-<f:selectItem itemLabel="UN - Unidade"/>
-<f:selectItem itemLabel="KG - KILO"/>
-<f:selectItem itemLabel="L - LITRO"/>
-<f:selectItem itemLabel="M - METRO"/>
+<p:selectOneMenu  required="true" requiredMessage="Selecione a unidade" value="#{produtoController.p.unidade}">
+<f:selectItem itemValue="UN" itemLabel="UN - Unidade"/>
+<f:selectItem  itemValue="KG" itemLabel="KG - KILO"/>
+<f:selectItem itemValue="l" itemLabel="L - LITRO"/>
+<f:selectItem itemValue="M" itemLabel="M - METRO"/>
 </p:selectOneMenu  >
 <p:outputLabel value="Status"/>
-<p:selectOneButton required="true" requiredMessage="Selecione o status">
-<f:selectItem itemLabel="Ativo"/>
-<f:selectItem itemLabel="Inativo"/>
+<p:selectOneButton required="true" requiredMessage="Selecione o status" value="#{produtoController.p.status}">
+<f:selectItem itemValue="Ativo" itemLabel="Ativo"/>
+<f:selectItem itemValue="Inativo" itemLabel="Inativo"/>
 </p:selectOneButton>
 
 </h:panelGrid>
@@ -50,7 +52,9 @@ xmlns:p="http://primefaces.org/ui">
 <p:tab title="Fornecedores">
 <h:panelGrid columns="2"> 
 <p:outputLabel value="Fornecedor : "/>
-<p:autoComplete size="40" />
+<p:autoComplete size="40"  dropdown="true" converter="fornecedorConverter" completeMethod="#{produtoController.completeFornecedor}" 
+var="fornecedor" itemLabel="#{fornecedor.nome}" itemValue="#{fornecedor}"  value="#{produtoController.fornecedor}"
+/>
 </h:panelGrid><br/>
 <p:dataTable style="text-align:center;" emptyMessage="Nenhum Fornecedor adicionado">
 <p:column width="2">
@@ -75,25 +79,31 @@ xmlns:p="http://primefaces.org/ui">
 
 <p:outputLabel value="Preço de Custo :"/>
 <p:inputText converterMessage="PREÇO DE CUSTO : É necessário digitar em números fracionários. ex: 2,25" 
-size="8" required="true" requiredMessage="Digite o preço de custo">
+size="8" required="true" requiredMessage="Digite o preço de custo"
+value="#{produtoController.p.custo}">
+<f:ajax render="lucro venda" event="keyup" listener="#{produtoController.calculaPreco()}"/>
 <f:convertNumber minFractionDigits="2" maxFractionDigits="2" locale="pt_BR" />
 </p:inputText>
 
-<p:outputLabel value="Margem :"/>
+<p:outputLabel value="Margem (%):"/>
 <p:inputText widgetVar="margem" id="margem" converterMessage="MARGEM : É necessário digitar em números fracionários. ex: 2,25" 
- size="8" required="true" requiredMessage="Digite a margem">
+ size="8" required="true" requiredMessage="Digite a margem"
+ value="#{produtoController.p.margem}">
+<f:ajax render="lucro venda" event="keyup" listener="#{produtoController.calculaPreco()}"/>
 <f:convertNumber minFractionDigits="2" maxFractionDigits="2" locale="pt_BR" />
 </p:inputText>
 
 <p:outputLabel value="Lucro :"/>
-<p:inputText id="lucro" converterMessage="LUCRO : É necessário digitar em números fracionários. ex: 2,25" 
- size="8" required="true" requiredMessage="Digite o lucro">
+<p:inputText readonly="true" id="lucro" converterMessage="LUCRO : É necessário digitar em números fracionários. ex: 2,25" 
+ size="8" required="true" requiredMessage="Digite o lucro"
+ value="#{produtoController.p.lucro}">
 <f:convertNumber minFractionDigits="2" maxFractionDigits="2" locale="pt_BR" />
 </p:inputText>
 
 <p:outputLabel value="Preço de Venda:"/>
-<p:inputText converterMessage="PREÇO DE VENDA : É necessário digitar em números fracionários. ex: 2,25" 
- size="8" required="true" requiredMessage="Digite o preço de venda">
+<p:inputText readonly="true" converterMessage="PREÇO DE VENDA : É necessário digitar em números fracionários. ex: 2,25" 
+ size="8" required="true" requiredMessage="Digite o preço de venda"
+ value="#{produtoController.p.venda}" id="venda">
 <f:convertNumber minFractionDigits="2" maxFractionDigits="2" locale="pt_BR" />
 </p:inputText>
  
@@ -107,9 +117,8 @@ size="8" required="true" requiredMessage="Digite o preço de custo">
 
 
 </p:tabView>
-<p:commandButton value="Salvar" icon="ui-icon-disk"/>
+<p:commandButton value="Salvar" icon="ui-icon-disk" action="#{produtoController.adicionar()}"/>
 
-<p:commandButton value="Cancelar" action="produto?faces-redirect=true" icon="ui-icon-closethick"/>
 </h:form>
 </p:panel>
 </ui:define>
