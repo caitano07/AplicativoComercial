@@ -6,7 +6,13 @@ xmlns:h="http://xmlns.jcp.org/jsf/html"
 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 xmlns:p="http://primefaces.org/ui">
 <ui:define name="titulo">| Cadastro de Produtos</ui:define>
-<ui:define name="css"><h:outputStylesheet library="css" name="cadproduto.css"/></ui:define>
+<ui:define name="css">
+<h:outputStylesheet library="css" name="cadproduto.css"/>
+
+<h:outputScript library="primefaces" name="jquery/jquery.js"/>
+<h:outputScript library="js" name="produto.js"/>
+
+</ui:define>
 
 <ui:define name="corpo">
 <p:panel header="Cadastro de Produtos" style="border:0px;">
@@ -64,23 +70,27 @@ xmlns:p="http://primefaces.org/ui">
 </p:column>
 </p:dataTable>
 </p:tab>
-<p:tab title="Preços">
+<p:tab title="Preços" >
 <h:panelGrid columns="2">
+
 <p:outputLabel value="Preço de Custo :"/>
 <p:inputText converterMessage="PREÇO DE CUSTO : É necessário digitar em números fracionários. ex: 2,25" 
 size="8" required="true" requiredMessage="Digite o preço de custo">
 <f:convertNumber minFractionDigits="2" maxFractionDigits="2" locale="pt_BR" />
 </p:inputText>
+
 <p:outputLabel value="Margem :"/>
-<p:inputText converterMessage="MARGEM : É necessário digitar em números fracionários. ex: 2,25" 
+<p:inputText widgetVar="margem" id="margem" converterMessage="MARGEM : É necessário digitar em números fracionários. ex: 2,25" 
  size="8" required="true" requiredMessage="Digite a margem">
 <f:convertNumber minFractionDigits="2" maxFractionDigits="2" locale="pt_BR" />
 </p:inputText>
+
 <p:outputLabel value="Lucro :"/>
-<p:inputText converterMessage="LUCRO : É necessário digitar em números fracionários. ex: 2,25" 
+<p:inputText id="lucro" converterMessage="LUCRO : É necessário digitar em números fracionários. ex: 2,25" 
  size="8" required="true" requiredMessage="Digite o lucro">
 <f:convertNumber minFractionDigits="2" maxFractionDigits="2" locale="pt_BR" />
 </p:inputText>
+
 <p:outputLabel value="Preço de Venda:"/>
 <p:inputText converterMessage="PREÇO DE VENDA : É necessário digitar em números fracionários. ex: 2,25" 
  size="8" required="true" requiredMessage="Digite o preço de venda">
@@ -97,7 +107,6 @@ size="8" required="true" requiredMessage="Digite o preço de custo">
 
 
 </p:tabView>
- 
 <p:commandButton value="Salvar" icon="ui-icon-disk"/>
 
 <p:commandButton value="Cancelar" action="produto?faces-redirect=true" icon="ui-icon-closethick"/>

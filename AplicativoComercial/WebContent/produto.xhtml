@@ -6,11 +6,13 @@ xmlns:h="http://xmlns.jcp.org/jsf/html"
 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 xmlns:p="http://primefaces.org/ui">
 <ui:define name="titulo">| Lista de Produtos</ui:define>
-<ui:define name="css"><h:outputStylesheet library="css" name="cadproduto.css"/></ui:define>
+<ui:define name="css">
+<h:outputStylesheet library="css" name="cadproduto.css"/>
+</ui:define>
 <ui:define name="corpo">
 <p:panel header="Lista de Produtos" style="border:0px;">
 
-<h:form>
+
 <p:commandButton value="Incluir Novo" action="cadastroProduto?faces-redirect=true" icon="ui-icon-plusthick"/>
 <p:commandButton value="Imprimir" icon="ui-icon-print"/>
 <br/>
@@ -21,29 +23,22 @@ xmlns:p="http://primefaces.org/ui">
 <p:inputText size="80" placeholder="Digite a descrição do produto"/>
 </h:panelGrid>
 </fieldset>
-</h:form>
+
 <br/>
 <p:dataTable style="height:250px;text-align:center">
-<p:column width="2">
-<f:facet name="header">Id</f:facet>
+<p:column width="2" headerText="Id">
 </p:column>
-<p:column width="40">
-<f:facet name="header">Descrição</f:facet>
+<p:column width="40" headerText="Descrição">
 </p:column>
-<p:column width="10">
-<f:facet name="header">Marca</f:facet>
+<p:column width="10" headerText="Marca">
 </p:column>
-<p:column width="5">
-<f:facet name="header">Preço</f:facet>
+<p:column width="5" headerText="Preço">
 </p:column>
-<p:column width="5">
-<f:facet name="header">Estoque</f:facet>
+<p:column width="5" headerText="Estoque">
 </p:column>
-<p:column width="5">
-<f:facet name="header">Consultar</f:facet>
+<p:column width="5" headerText="Editar">
 </p:column>
-<p:column width="5">
-<f:facet name="header">Excluir</f:facet>
+<p:column width="5" headerText="Excluir">
 </p:column>
 </p:dataTable>
 
