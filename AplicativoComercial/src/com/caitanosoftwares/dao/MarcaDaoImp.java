@@ -2,12 +2,18 @@ package com.caitanosoftwares.dao;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Repository;
 
 import com.caitanosoftwares.model.Marca;
 import com.caitanosoftwares.util.HibernateUtil2;
 
 import java.util.List;
 
+@Repository
+@Qualifier("marcaDaoImp")
+@Scope("prototype")
 public class MarcaDaoImp implements MarcaDao {
 
 

@@ -3,35 +3,46 @@ package com.caitanosoftwares.service;
 
 import java.util.List;
 
-import com.caitanosoftwares.dao.MarcaDao;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.caitanosoftwares.dao.MarcaDaoImp;
 import com.caitanosoftwares.model.Marca;
 
+@org.springframework.stereotype.Service
 public class MarcaService implements Service<Marca> {
-
-	MarcaDao dao;
+	@Autowired
+	MarcaDaoImp dao;
 	
 	public void salvar(Marca marca){
-		dao = new MarcaDaoImp();
+		
         dao.save(marca);		
 	}
 	
 	public void excluir(Marca marca){
-		dao = new MarcaDaoImp();
         dao.remove(marca);
 	}
 	
 	public List<Marca> listar(String valor){
-        List <Marca> lista = new MarcaDaoImp().list(valor);
-		return lista;
+		return dao.list(valor);
+		
 	}
 	
 	public void editar(Marca marca){
 		
-		MarcaDao dao = new MarcaDaoImp();
         dao.update(marca);
 		
 	}
+
+	public MarcaDaoImp getDao() {
+		return dao;
+	}
+
+	public void setDao(MarcaDaoImp dao) {
+		this.dao = dao;
+	}
+
+
+	
 	
 	
 }
