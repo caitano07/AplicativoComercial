@@ -11,7 +11,7 @@ import com.caitanosoftwares.model.Marca;
 @org.springframework.stereotype.Service
 public class MarcaService implements Service<Marca> {
 	@Autowired
-	MarcaDaoImp dao;
+	MarcaDaoImp dao= new MarcaDaoImp();
 	
 	public void salvar(Marca marca){
 		

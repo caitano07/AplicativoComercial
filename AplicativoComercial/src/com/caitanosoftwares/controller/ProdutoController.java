@@ -74,8 +74,8 @@ public class ProdutoController {
 	
 
 	public String adicionar() {
-		System.out.println("classe - "+fornecedor);
-		//p.getFornecedores().add(fornecedor);
+		System.out.println("teste");
+		p.getFornecedores().add(fornecedor);
 		service.salvar(p);
 		setP(new Produto());
 		return "produto?faces-redirect=true";
