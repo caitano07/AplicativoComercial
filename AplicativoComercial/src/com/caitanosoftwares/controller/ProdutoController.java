@@ -103,7 +103,7 @@ public class ProdutoController {
 
 	public void excluir(Produto p) {
 		service.excluir(p);
-
+		setP(new Produto());
 	}
 	
 	public void calculaPreco(){

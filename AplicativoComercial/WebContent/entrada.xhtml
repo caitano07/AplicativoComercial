@@ -13,7 +13,9 @@ xmlns:p="http://primefaces.org/ui">
 <LEGEND>Selecionar Fornecedor</LEGEND>
 <h:panelGrid columns="4">
 <p:outputLabel value="Fornecedor :" />
-<p:inputText size="5" widgetVar="fornecedor"/><p:commandButton icon="ui-icon-search" onclick="PF('dlgforn').show()"/>
+<p:inputText size="5" widgetVar="fornecedor"/>
+<p:inputText size="45" readonly="true" widgetVar="nomeFornecedor"/>
+<p:commandButton icon="ui-icon-search" onclick="PF('dlgforn').show()"/>
 <p:outputLabel/>
 </h:panelGrid>
 </fieldset>

@@ -14,7 +14,7 @@ xmlns:p="http://primefaces.org/ui">
 <p:panel header="Cadastro de Produtos" style="border:0px;">
 <p:growl autoUpdate="true"/>
 
-<p:commandButton value="Cancelar" action="produto?faces-redirect=true" icon="ui-icon-closethick"/>
+<p:commandButton value="Cancelar" action="#{produtoController.preparaObjeto()}" icon="ui-icon-closethick"/>
 <h:form>
 <p:tabView orientation="left">
 <p:tab title="Dados do Produto">

@@ -11,14 +11,17 @@ xmlns:p="http://primefaces.org/ui">
 <p:panel header="Lista de Clientes" style="border:0px;">
 
 <h:form>
+
+<p:commandButton value="Imprimir Todos" icon="ui-icon-print"/>
 <fieldset>
 <legend>Buscar Cliente</legend>
 <h:panelGrid columns="5">
 <p:outputLabel value="Buscar por :"/>
-<p:selectOneMenu></p:selectOneMenu>
-<p:inputText size="50"/>
-<p:outputLabel value="Ordenar por :"/>
-<p:selectOneMenu></p:selectOneMenu>
+<p:selectOneMenu>
+<f:selectItem itemValue="Id" itemLabel="Id"/>
+<f:selectItem itemValue="Nome" itemLabel="Nome"/>
+</p:selectOneMenu>
+<p:inputText size="70"/>
 </h:panelGrid>
 </fieldset>
 <br/>
@@ -32,21 +35,9 @@ xmlns:p="http://primefaces.org/ui">
 </p:column><p:column width="10" headerText="RG">
 #{cliente.rg}
 </p:column><p:column width="5" headerText="Consultar">
-<p:commandButton icon="ui-icon-search" action="#{clienteController.atualizar(cliente)}" />
-</p:column><p:column width="5" headerText="Excluir">
-<p:commandButton icon="ui-icon-trash" action="#{clienteController.excluir(cliente)}">
-<p:confirm header="Confirmação"  message="Deseja excluir o cliente ?" icon="ui-icon-alert"/>
-</p:commandButton>
-
-
-<p:confirmDialog global="true">
-<p:commandButton value="Sim"  styleClass="ui-confirmdialog-yes"/>
-<p:commandButton value="Não" styleClass="ui-confirmdialog-no" />
-</p:confirmDialog>
-</p:column>
-</p:dataTable>
+<p:commandButton icon="ui-icon-search" />
+</p:column></p:dataTable>
 <br/>
-<p:commandButton value="Imprimir" icon="ui-icon-print"/>
 
 </h:form>
 

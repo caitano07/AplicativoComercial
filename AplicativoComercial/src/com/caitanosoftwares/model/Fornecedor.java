@@ -1,6 +1,7 @@
 package com.caitanosoftwares.model;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -9,6 +10,7 @@ public class Fornecedor extends Pessoa {
 	String RazaoSocial;
 	String pessoaContato;
 	@ManyToOne
+	@JoinColumn(name = "fornecedores")
 	Produto produto;
 	
 	public Endereco getEndereco() {

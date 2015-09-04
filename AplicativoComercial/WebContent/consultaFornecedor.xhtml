@@ -11,47 +11,41 @@ xmlns:p="http://primefaces.org/ui">
 <p:panel header="Lista de Fornecedores" style="border:0px;">
 
 <h:form>
+
+<p:commandButton value="Imprimir Todos" icon="ui-icon-print"/>
+
 <fieldset >
 <legend>Buscar Fornecedor</legend>
 <h:panelGrid columns="5">
 <p:outputLabel value="Buscar por :"/>
-<p:selectOneMenu></p:selectOneMenu>
-<p:inputText size="50"/>
-<p:outputLabel value="Ordenar por :"/>
-<p:selectOneMenu></p:selectOneMenu>
+<p:selectOneMenu>
+<f:selectItem itemLabel="Id" itemValue="Id"/>
+<f:selectItem itemLabel="Descrição" itemValue="Descrição"/>
+</p:selectOneMenu>
+<p:inputText size="70"/>
 </h:panelGrid>
 </fieldset>
 </h:form>
 <br/>
 <p:dataTable var="forn" value="#{fornecedorController.lista}" style="height:280px;text-align:center" emptyMessage="Nenhum fornecedor cadastrado">
-<p:column width="2">
-<f:facet name="header">Id</f:facet>
+<p:column width="2" headerText="Id">
 #{forn.id}
 </p:column>
-<p:column width="45">
-<f:facet name="header">Razão Social</f:facet>
+<p:column width="45" headerText="Razão Social">
 #{forn.razaoSocial}
 </p:column>
-<p:column  width="35">
-<f:facet name="header">Nome Fantasia</f:facet>
+<p:column  width="35" headerText="Nome Fantasia">
 #{forn.nome}
 </p:column>
-<p:column width="10">
-<f:facet name="header">CNPJ</f:facet>
+<p:column width="10" headerText="CNPJ">
 #{forn.cpf}
 </p:column>
-<p:column width="2">
-<f:facet name="header">Selecionar</f:facet>
+<p:column width="2" headerText="Consultar">
 <p:commandButton icon="ui-icon-search" />
-</p:column>
-<p:column width="2">
-<f:facet name="header">Excluir</f:facet>
-<p:commandButton icon="ui-icon-trash"/>
 </p:column>
 </p:dataTable>
 
 <br/>
-<p:commandButton value="Imprimir Todos" icon="ui-icon-print"/>
 
 </p:panel>
 </ui:define>

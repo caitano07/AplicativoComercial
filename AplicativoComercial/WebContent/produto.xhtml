@@ -50,7 +50,7 @@
 #{produto.estoque}
 </p:column>
 				<p:column width="5" headerText="Editar">
-					<p:commandButton icon="ui-icon-pencil" update="tabela" />
+					<p:commandButton icon="ui-icon-pencil" action="#{produtoController.preparaAlteracao(produto)}" />
 				</p:column>
 				<p:column width="5" headerText="Excluir">
 					<p:commandButton icon="ui-icon-trash" update="tabela" action="#{produtoController.excluir(produto)}">
