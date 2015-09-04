@@ -13,5 +13,12 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
 	<context:annotation-config />
 	<context:component-scan base-package="com.caitanosoftwares.service" />
 	<context:component-scan base-package="com.caitanosoftwares.dao" />
-
+ 
+ 
+ <bean id="marcaDao" class="com.caitanosoftwares.dao.MarcaDaoImp"></bean>
+ 
+ 
+ <bean id="marcaService" class="com.caitanosoftwares.service.MarcaService">
+ <property name="dao" ref="marcaDao"></property>
+ </bean>
 </beans>

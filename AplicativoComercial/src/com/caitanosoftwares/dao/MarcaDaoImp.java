@@ -10,10 +10,10 @@ import com.caitanosoftwares.model.Marca;
 import com.caitanosoftwares.util.HibernateUtil2;
 
 import java.util.List;
-
-@Repository
-@Qualifier("marcaDaoImp")
-@Scope("prototype")
+//
+//@Repository
+//@Qualifier("marcaDaoImp")
+//@Scope("prototype")
 public class MarcaDaoImp implements MarcaDao {
 
 
