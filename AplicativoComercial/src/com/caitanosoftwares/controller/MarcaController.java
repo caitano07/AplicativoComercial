@@ -2,6 +2,7 @@ package com.caitanosoftwares.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -47,7 +48,12 @@ public class MarcaController {
         this.marca = marca;
     }
 
-
+	private void preencheList(){
+		if(lista.size()==0){
+	        lista = service.listar(pesq);
+	    	}
+		
+	}
     
     public String adicionar() {
     	service.salvar(marca);
@@ -60,8 +66,10 @@ public class MarcaController {
         }
 
     public List<Marca> listar() {
-        lista = service.listar(pesq);
-        return lista;
+    	preencheList();
+        return lista.stream().filter(
+        		m->m.getNome().contains(pesq)).
+        		collect(Collectors.toList());
     }
 
     public String alterar() {

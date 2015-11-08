@@ -3,7 +3,6 @@ package com.caitanosoftwares.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -24,7 +23,7 @@ public class Produto {
     String codbarras;
     String unidade;
     String status;
-    @OneToOne
+    @OneToOne(fetch=FetchType.LAZY)
     Marca marca;
     double venda;
     double custo;
@@ -32,7 +31,7 @@ public class Produto {
     double margem;
     int estoque;
     
-    @OneToMany(fetch=FetchType.EAGER)
+    @OneToMany
     @JoinTable(name="produto_fornecedor",  
               joinColumns={@JoinColumn(name="produto_id", 
                referencedColumnName="id")},  

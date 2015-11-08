@@ -32,7 +32,7 @@ public class ProdutoDaoImp implements ProdutoDao {
 	public List<Produto> list(String var) {
 		Session session = HibernateUtil2.getSessionFactory().openSession();
         Transaction t = session.beginTransaction();
-        List lista = session.createQuery("from Produto where descricao like '%"+var+"%'").list();
+        List lista = session.createQuery("from Produto p inner join fetch p.marca where descricao like '%"+var+"%'").list();
         t.commit();
         session.close();
         return lista;
